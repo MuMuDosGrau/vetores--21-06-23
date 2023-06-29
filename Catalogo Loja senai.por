@@ -9,22 +9,23 @@ programa {
 
     faca{
 
-      escreva("Bem vindo ao SenaiGames!\nEscolha uma opção: " ,
+      escreva("Bem vindo ao SenaiGames!\nEscolha uma opÃ§Ã£o: " ,
       "\n(1)catalogo" ,
       "\n(2)Pesquisar produto por nome" ,
-      "\n(3)Pesquisar produto com preços acima de R$100,00" ,
-      "\n(4)Pesquisar produto com preços até R$100,00" ,
+      "\n(3)Pesquisar produto com preÃ§os acima de R$100,00" ,
+      "\n(4)Pesquisar produto com preÃ§os atÃ© R$100,00" ,
       "\n(5)Sair\nOpcao: ")
       leia(opcao)
       
 
       escolha(opcao) {
+        
         caso 1 :
           para(inteiro i = 0; i < 5; i++){
             escreva(produtos[i] , " R$" , precos[i] , "\n")
             totalProduto += precos[i]
           }
-          escreva("Total :" , totalProduto ,  "\n")
+          escreva("Total: " , totalProduto ,  "\n")
         pare
 
         caso 2 :
@@ -37,15 +38,31 @@ programa {
           produto = txt.caixa_baixa(produtos[i])
           nomeProduto = txt.caixa_baixa(nomeProduto)
 
-          se(txt.posicao_texto(nomeProduto, produto, 0) >= 0){
-            escreva(produtos[i] , " ")
+          se(txt.posicao_texto(nomeProduto, produto,  0) >= 0){
+            escreva(produtos[i] , " R$ " , precos[i])
           }
         }
-
         escreva("\n")
         pare
-  
 
+        caso 3 : 
+          para(inteiro i = 0; i < 5; i++){
+            se(precos[i] > 100){
+              escreva("Produto: " , produtos[i] , " R$ " , precos[i] , "\n")
+            }
+          }
+
+        pare  
+
+        caso 4 :
+        para(inteiro i = 0; i < 5; i++){
+            se(precos[i] <= 100){
+              escreva("Produto: " , produtos[i] , " R$ " , precos[i] , "\n")
+            }
+          }
+
+        pare 
+  
       }
     }enquanto(opcao != 5)
   }
